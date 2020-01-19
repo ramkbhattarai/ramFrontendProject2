@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="top">
+        <h2> All Applicants</h2>
+        <button class="btn btn-success" (click)="handleBack()">Back</button>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of employees">
+                <td>{{e.id}}</td>
+                <td>{{(e.fname + ' ' + e.lname) | titlecase }}</td>
+                <td><button class="btn btn-success" (click)="handleClick(e.id)">Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-detail [allReims]="allReims"></app-detail>

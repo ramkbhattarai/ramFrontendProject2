@@ -1,0 +1,44 @@
+
+<div class="container" *ngIf="allReims">
+    <h2> All Reimbursements</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Type</th>
+                <th>Action</th>
+                <!-- <th>Receipt</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of allReims">
+                <td>{{r.id}}</td>
+                <td>{{r.amount}}</td>
+                <td>{{r.description}}</td>
+                <td *ngIf="r.status_id === 1">Denied</td>
+                <td *ngIf="r.status_id === 2">Pending</td>
+                <td *ngIf="r.status_id === 3">Approved</td>
+                <td *ngIf="r.type_id === 1">Housing</td>
+                <td *ngIf="r.type_id === 2">Transport</td>
+                <td *ngIf="r.type_id === 3">Food</td>
+                <td *ngIf="r.type_id === 4">Study</td>
+                <td *ngIf="r.type_id === 5">Medicine</td>
+                <td *ngIf="r.type_id === 6">Others</td>
+                <td>
+                    <button class="btn btn-success" (click)="handleApprove(r)">Approve</button>
+                <button class="btn btn-success" (click)="handleDeny(r)">Deny</button>
+                </td>
+
+                <!-- <td>{{r.receipt</td> -->
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<div  class="container" *ngIf="!allReims">
+    <h3>You haven't filed any Reimbursements</h3>
+</div>
+

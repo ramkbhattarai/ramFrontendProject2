@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <h3>Registration Form</h3>
+    <form [formGroup]="registrationForm" (ngSubmit) ="handleSubmit()">
+
+        <div class="form-group">
+            <label for="">First Name:</label>
+            <input [class.is-invalid]="registrationForm.get('fname').invalid && registrationForm.get('fname').touched" formControlName="fname" type="text" class="form-control">
+            <div *ngIf="registrationForm.get('fname').invalid && registrationForm.get('fname').touched">
+                <small *ngIf="registrationForm.get('fname').errors?.required" class="text-danger">First Name is required</small>
+                <small  *ngIf="registrationForm.get('fname').errors?.minlength" class="text-danger">Minimum Length of First Name must be of 3 characters</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Last Name:</label>
+            <input formControlName="lname" type="text" class="form-control">
+            <small [class.d-none]="registrationForm.get('lname').valid || registrationForm.get('lname').untouched" class="text-danger">Must Provide Last Name</small>
+        </div>
+        <div class="form-group">
+            <label for="">User Name:</label>
+            <!-- <input formControlName="userName" type="text" class="form-control"> -->
+            <input [class.is-invalid]="registrationForm.get('userName').invalid && registrationForm.get('userName').touched"
+                formControlName="userName" type="text" class="form-control">
+            <div *ngIf="registrationForm.get('userName').invalid && registrationForm.get('userName').touched">
+                <small *ngIf="registrationForm.get('userName').errors?.required" class="text-danger">User Name is required</small>
+                <small *ngIf="registrationForm.get('userName').errors?.minlength" class="text-danger">Minimum Length of User Name must
+                    be of 5 characters</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Email:</label>
+            <input formControlName="email" type="text" class="form-control">
+            <small [class.d-none]="registrationForm.get('email').valid || registrationForm.get('email').untouched" class="text-danger">Must Provide Email</small>
+
+        </div>
+        <div class="form-group">
+            <label for="">Password:</label>
+            <input formControlName="password" type="password" class="form-control">
+            <div *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched">
+                <small *ngIf="registrationForm.get('password').errors?.required" class="text-danger">Password is required</small>
+                <small *ngIf="registrationForm.get('password').errors?.minlength" class="text-danger">Minimum Length of Password
+                    must be of 4 characters</small>
+                <!--  <small *ngIf="registrationForm.get('password').errors?.forbiddenPassword" class="text-danger">{{registrationForm.get('password').errors?.forbiddenPassword.value}} is not allowed</!--> 
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Conform Password:</label>
+            <input [class.is-invalid]="registrationForm.errors?.mismatch" formControlName="confirmPassword" type="password" class="form-control">
+            <small *ngIf="registrationForm.errors?.mismatch" class="text-danger">Password don't match</small>
+         <!-- <small [class.d-none]="registrationForm.get('confirmPassword').valid || registrationForm.get('confirmPassword').untouched"
+                            class="text-danger">Must Provide Last Name</small> -->
+
+        </div>
+        <div class="form-group">
+            <label for="">Your Role</label>
+            <select formControlName="role_id" class="custom-select">
+                <option selected>Choose the roles below</option>
+                <option *ngFor="let r of userRoles">{{r}}</option>
+            </select>
+        </div>
+        <button [disabled]="!registrationForm.valid" class="btn btn-primary">Sign Up</button>
+    </form>
+</div>

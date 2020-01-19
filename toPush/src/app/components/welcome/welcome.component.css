@@ -1,0 +1,10 @@
+img{
+       width:700px; 
+       height: 700px;
+    }
+    h3{
+        color:red;
+    }
+    .container{
+       display: flex;
+    }

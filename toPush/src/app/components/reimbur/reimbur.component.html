@@ -1,0 +1,10 @@
+<div class="jumbotron">
+    <h2 *ngIf="currentUser">Welcome {{(currentUser.fname + ' ' + currentUser.lname) | titlecase }}!</h2>
+    <button class="btn btn-success made" (click)="logout()">LOGOUT</button>
+    <button class="btn btn-success made" (click)="apply()">Apply</button>
+
+    <button class="btn btn-success made" (click)="view()">Go To Applied Reimbursments</button>
+
+    <button *ngIf="currentUser.role_id === 2" class="btn btn-success made" (click)="validate()">Validate</button>
+
+</div>

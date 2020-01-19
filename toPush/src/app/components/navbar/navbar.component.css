@@ -1,0 +1,13 @@
+.navbar{
+    display: inline;
+}
+.btn{
+   
+   margin-left: 5px;
+   padding: 5px;
+   border: 1px solid rgb(76, 226, 156);
+   text-decoration: none;
+   background-color: rgb(86, 238, 137);
+   color: blueviolet;
+   border-radius: 5%;
+}
